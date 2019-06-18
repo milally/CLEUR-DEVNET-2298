@@ -1,0 +1,13 @@
+---
+- hosts: ucs
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: set boot order
+    cisco_imc_boot_order_precision:
+      boot_devices:
+        - {"order":"1", "device-type":"pch", "name":"m.2"}
+        - {"order":"2", "device-type":"pxe", "name":"pxe"}
+      ip: "{{ imc_ip }}"
+      username: "{{ imc_username }}"
+      password: "{{ imc_password }}"
