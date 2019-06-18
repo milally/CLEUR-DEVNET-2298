@@ -1,0 +1,1 @@
+This python code can be executed with 'python x710update.py -i <IP address> -u <username> -p <password>' for a single server, or executed with 'python x710update.py -f <path_to_file.csv>' for executing on multiple servers.
