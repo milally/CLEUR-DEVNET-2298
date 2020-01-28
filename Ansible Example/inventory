@@ -1,6 +1,5 @@
 [ucs]
-ucs1 ucs_ip=10.87.90.163 username=admin password=Cisco123!
-#ucs1 ucs_ip=10.1.2.3 username=admin password=password
-#ucs2 ucs_ip=10.2.3.4 username=admin password=password
-#ucs3 ucs_ip=10.3.4.5 username=admin password=password
+ucs1 ucs_ip=10.1.2.3 username=admin password=password
+ucs2 ucs_ip=10.2.3.4 username=admin password=password
+ucs3 ucs_ip=10.3.4.5 username=admin password=password
 #ucs4 ucs_ip=10.5.6.7 username=admin password=password
