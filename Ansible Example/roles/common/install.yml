@@ -1,0 +1,10 @@
+- name: check if ucsmsdk is installed
+  shell: python -c "import ucsmsdk"
+  register: output
+  ignore_errors: yes
+  changed_when: False
+
+- name: install ucsmsdk
+  pip:
+    name: ucsmsdk
+  when: output.rc != 0

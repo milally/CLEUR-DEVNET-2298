@@ -1,6 +1,6 @@
 {
 	"name": "goldbios",
-	"description": "Comcast Golden BIOS for C220M5 with X710 PXE Boot",
+	"description": "Golden BIOS for C220M5 with X710 PXE Boot",
 	"tokens": {
 			"BaudRate": "115.2k",
 			"FRB-2": "Enabled",

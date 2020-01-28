@@ -1,0 +1,50 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+  - common
+- hosts: ucs
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Add New VLANs
+    ucs_vlans_list:
+      hostname: "{{ ucs_ip }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      vlans_list:
+      - name: "{{ item.name }}"
+        id: "{{ item.id }}"
+    with_items: "{{ vlans }}"
+
+  - name: Add VLANs to vNIC Templates
+    ucs_vnic_template:
+      hostname: "{{ ucs_ip }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      name: "{{ item.template }}"
+      vlans_list:
+      - name: "{{ item.name }}"
+        state: present
+    with_items: "{{ vlans }}"
+
+  - name: Remove VLANs from vNIC Templates
+    ucs_vnic_template:
+      hostname: "{{ ucs_ip }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      name: "{{ item.template }}"
+      vlans_list:
+      - name: "{{ item.replaces_name }}"
+        state: absent
+    with_items: "{{ vlans }}"
+
+  - name: Remove old VLANs
+    ucs_vlans_list:
+      hostname: "{{ ucs_ip }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      state: absent
+      vlans_list:
+      - name: "{{ item.replaces_name }}"
+    with_items: "{{ vlans }}"

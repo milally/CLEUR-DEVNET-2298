@@ -1,0 +1,11 @@
+vlans:
+  - id: 123
+    name: 123
+    replaces_id: 99
+    replaces_name: 99
+    template: test99
+  - id: 234
+    name: 234
+    replaces_id: 199
+    replaces_name: 199
+    template: test199
